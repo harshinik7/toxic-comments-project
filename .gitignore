@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Virtual environments
+.env
+.venv/
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (large - do not commit raw data)
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.zip
+*.gz
+*.tar
+
+# Model files
+*.joblib
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Logs and outputs
+logs/
+*.log
+outputs/
+
+# Credentials
+*.env
+secrets.py
+api_keys.py
