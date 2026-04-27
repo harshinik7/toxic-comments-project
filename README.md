@@ -15,6 +15,9 @@ cd toxic-comments-project
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Setup environment
+cp .env.example .env
 ```
 
 ## 📖 Project Scope & Research Questions
@@ -22,59 +25,59 @@ pip install -r requirements.txt
 Our research focuses on the challenges of real-world content moderation, specifically handling class imbalance and capturing subtle context.
 
 *   **RQ1: Class Imbalance Mitigation** – How does severe class imbalance (8% toxic) affect classification performance, and which rebalancing strategies (SMOTE vs. Class-Weighting) most effectively improve the recall of toxic comments?
-*   **RQ2: Representation Quality** – Do transformer-based text embeddings (DistilBERT) improve the detection of subtle toxicity (sarcasm, implied insults) compared to traditional Bag-of-Words/TF-IDF models?
-*   **RQ3: Thematic Risk Analysis** – How do discussion topics relate to toxicity levels, and can features from Latent Dirichlet Allocation (LDA) improve classification accuracy?
+*   **RQ2: Representation Quality** – Do transformer-based text embeddings improve detection of subtle toxicity compared to traditional Bag-of-Words/TF-IDF models?
+*   **RQ3: Thematic Risk Analysis** – How do discussion topics relate to toxicity levels?
 
 ## 📊 Results Summary
 
-Using **class-weighting** and **threshold tuning**, we successfully increased toxic comment recall from **0.346 to 0.619** (a nearly 2x improvement) while maintaining reasonable precision. This demonstrates that accuracy is a misleading metric for imbalanced moderation tasks, and that model calibration is critical for safety-critical applications.
+Using **class-weighting** and **threshold tuning**, we successfully increased toxic comment recall from **0.346 to 0.619** (a nearly 2x improvement).
 
-## 🚀 Features
+| Model | Toxic Precision | Toxic Recall | Toxic F1 | Accuracy |
+| :--- | :--- | :--- | :--- | :--- |
+| Always Non-Toxic | 0.000 | 0.000 | 0.000 | 0.920 |
+| LogReg (Baseline) | 0.796 | 0.346 | 0.482 | 0.941 |
+| **LogReg (Balanced + Tuned)** | **0.502** | **0.619** | **0.555** | **0.920** |
 
-*   **Course Techniques:** TF-IDF vectorization, Logistic Regression, and SVM classifiers.
-*   **Advanced Techniques:** Pretrained **DistilBERT** fine-tuning for contextual representations.
-*   **Imbalance Handling:** Implementation of **SMOTE** and cost-sensitive learning (class-weighting).
-*   **Unsupervised Learning:** Topic discovery using **LDA** to identify high-risk conversational themes.
+## 🚀 Features & DRES Components
+
+- **Running Experiments:** Use `scripts/evaluate.py` to train and evaluate models from the command line.
+- **Testing:** Unit tests for data preprocessing logic are located in `tests/`.
+- **Environment Management:** Configuration via `.env` file for data paths and model hyper-parameters.
+- **Data Processing:** Clean, modular scripts in `src/` for reproducible data pipelines.
 
 ## 📂 Repository Structure
 
 ```text
 toxic-comments-project/
-├── checkpoints/             # Project milestone notebooks
-│   ├── checkpoint_1.ipynb   # Dataset selection and initial EDA
-│   └── checkpoint_2.ipynb   # Research questions & methodology
-├── data/                    # Data access instructions and samples
-│   └── README.md            # Instructions for Kaggle dataset access
-├── assets/                  # Figures, EDA plots, and visualizations
-├── main_notebook.ipynb      # Final curated project deliverable
-├── requirements.txt         # Full package list for reproduction
-└── README.md                # This file
+├── assets/           # Figures and visualizations
+├── checkpoints/      # Milestone notebooks
+├── data/             # Data access instructions
+├── scripts/          # Command-line experiment scripts
+├── src/              # Modular source code
+├── tests/            # Unit tests
+├── .env.example      # Template for environment variables
+├── requirements.txt  # Project dependencies
+└── README.md         # This file
 ```
 
-## 🛠️ Reproduction & Dependencies
+## 🛠️ Reproduction & Testing
 
-This project was built using **Google Colab**. To reproduce our results:
-1.  Ensure you have Python 3.10.12 installed.
-2.  Install the required packages via `pip install -r requirements.txt`.
-3.  Follow the notebook execution order: `checkpoint_1.ipynb` -> `checkpoint_2.ipynb` -> `main_notebook.ipynb`.
+### Running Tests
+```bash
+python -m unittest discover tests
+```
 
-### Key Dependencies:
-- **Python:** 3.10.12
-- **Pandas:** 2.1.4
-- **Scikit-learn:** 1.4.2
-- **Imbalanced-learn:** 0.12.2
-- **NLTK:** 3.8.1
-- **Matplotlib:** 3.8.0
+### Running Experiments
+```bash
+python scripts/evaluate.py data/train.csv
+```
 
 ## ✨ Citation
-
 ```text
 @misc{harshini2026toxic,
   author = {Harshini},
   title = {Toxicity Detection in News Comments},
   year = {2026},
-  publisher = {GitHub},
-  journal = {GitHub Repository},
-  howpublished = {\url{https://github.com/harshinik7/toxic-comments-project}}
+  url = {https://github.com/harshinik7/toxic-comments-project}
 }
 ```
