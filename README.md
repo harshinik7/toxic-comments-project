@@ -1,6 +1,10 @@
 # Toxicity Detection in News Comments
 
-This repository contains code and experiments for identifying and classifying toxic content in online news discussions. Leveraging the **Civil Comments (Jigsaw)** dataset, this project benchmarks traditional machine learning baselines against modern transformer-based architectures and topic-modeling approaches to improve moderation accuracy in imbalanced data scenarios.
+Online platforms use machine learning to flag toxic content, but real-world data is often highly imbalanced. This project investigates how severe class imbalance (only ~8% toxic) affects classification performance and demonstrates how rebalancing strategies can double the recall of toxic comments compared to naive baselines.
+
+👉 **Start here:** [`main_notebook.ipynb`](./main_notebook.ipynb)
+
+🎥 **Project Video:** [PASTE YOUR VIDEO LINK HERE]
 
 ## ⚡ Quickstart
 
@@ -21,38 +25,49 @@ Our research focuses on the challenges of real-world content moderation, specifi
 *   **RQ2: Representation Quality** – Do transformer-based text embeddings (DistilBERT) improve the detection of subtle toxicity (sarcasm, implied insults) compared to traditional Bag-of-Words/TF-IDF models?
 *   **RQ3: Thematic Risk Analysis** – How do discussion topics relate to toxicity levels, and can features from Latent Dirichlet Allocation (LDA) improve classification accuracy?
 
+## 📊 Results Summary
+
+Using **class-weighting** and **threshold tuning**, we successfully increased toxic comment recall from **0.346 to 0.619** (a nearly 2x improvement) while maintaining reasonable precision. This demonstrates that accuracy is a misleading metric for imbalanced moderation tasks, and that model calibration is critical for safety-critical applications.
+
 ## 🚀 Features
 
 *   **Course Techniques:** TF-IDF vectorization, Logistic Regression, and SVM classifiers.
 *   **Advanced Techniques:** Pretrained **DistilBERT** fine-tuning for contextual representations.
 *   **Imbalance Handling:** Implementation of **SMOTE** and cost-sensitive learning (class-weighting).
 *   **Unsupervised Learning:** Topic discovery using **LDA** to identify high-risk conversational themes.
-*   **Robust Evaluation:** Precision-Recall curves and focused error analysis on borderline (0.3–0.7) toxicity scores.
 
 ## 📂 Repository Structure
 
 ```text
 toxic-comments-project/
 ├── checkpoints/             # Project milestone notebooks
-│   ├── checkpoint_1.ipynb   # EDA and data cleaning
+│   ├── checkpoint_1.ipynb   # Dataset selection and initial EDA
 │   └── checkpoint_2.ipynb   # Research questions & methodology
 ├── data/                    # Data access instructions and samples
+│   └── README.md            # Instructions for Kaggle dataset access
 ├── assets/                  # Figures, EDA plots, and visualizations
 ├── main_notebook.ipynb      # Final curated project deliverable
-├── requirements.txt         # Python dependencies
+├── requirements.txt         # Full package list for reproduction
 └── README.md                # This file
 ```
 
-## 📊 Methodology Summary
+## 🛠️ Reproduction & Dependencies
 
-Our benchmarking approach isolates model performance by:
-1.  **Establishing Baselines:** Using linear models on high-dimensional sparse features.
-2.  **Evaluating Representations:** Comparing fixed vs. contextual embeddings.
-3.  **Thematic Augmentation:** Measuring the uplift provided by adding unsupervised topic proportions to supervised features.
+This project was built using **Google Colab**. To reproduce our results:
+1.  Ensure you have Python 3.10.12 installed.
+2.  Install the required packages via `pip install -r requirements.txt`.
+3.  Follow the notebook execution order: `checkpoint_1.ipynb` -> `checkpoint_2.ipynb` -> `main_notebook.ipynb`.
+
+### Key Dependencies:
+- **Python:** 3.10.12
+- **Pandas:** 2.1.4
+- **Scikit-learn:** 1.4.2
+- **Imbalanced-learn:** 0.12.2
+- **NLTK:** 3.8.1
+- **Matplotlib:** 3.8.0
 
 ## ✨ Citation
 
-If you use this work, please cite:
 ```text
 @misc{harshini2026toxic,
   author = {Harshini},
