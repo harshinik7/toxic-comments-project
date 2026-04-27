@@ -4,7 +4,7 @@ Online platforms use machine learning to flag toxic content, but real-world data
 
 👉 **Start here:** [`main_notebook.ipynb`](./main_notebook.ipynb)
 
-🎥 **Project Video:** [PASTE YOUR VIDEO LINK HERE]
+🎥 **Project Video:** (https://www.youtube.com/watch?v=-QZ2_sDofZU)
 
 ## ⚡ Quickstart
 
