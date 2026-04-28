@@ -71,6 +71,34 @@ python -m unittest discover tests
 ```bash
 python scripts/evaluate.py data/train.csv
 ```
+### Colab Environment
+
+This project was developed in Google Colab. The dependency file at the root of the repository (`requirements.txt`) was generated from the Colab session environment so the package versions used for development are documented here.
+
+To regenerate the environment file from Colab, run:
+
+```python
+!pip freeze > requirements.txt
+from google.colab import files
+files.download("requirements.txt")
+```
+
+Then replace the repository’s `requirements.txt` with the downloaded file.
+
+### Python Version
+
+Project environment used in Colab:
+
+```bash
+Python 3.12.13
+```
+
+You can verify the version in Colab with:
+
+```python
+!python --version
+```
+
 
 ## ✨ Citation
 ```text
