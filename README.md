@@ -28,6 +28,15 @@ Our research focuses on the challenges of real-world content moderation, specifi
 *   **RQ2: Representation Quality** – Do transformer-based text embeddings improve detection of subtle toxicity compared to traditional Bag-of-Words/TF-IDF models?
 *   **RQ3: Thematic Risk Analysis** – How do discussion topics relate to toxicity levels?
 
+📁 Data
+
+We use a news comments dataset labeled for toxicity (toxic vs. non-toxic). The training data is expected at:
+
+- `data/train.csv` – main labeled dataset used in `main_notebook.ipynb`
+
+Preprocessing steps (tokenization, text cleaning, rebalancing) are implemented in the notebook and helper scripts under `src/`, so you can reproduce the pipeline end-to-end from the Colab environment.
+
+
 ## 📊 Results Summary
 
 Using **class-weighting** and **threshold tuning**, we successfully increased toxic comment recall from **0.346 to 0.619** (a nearly 2x improvement).
@@ -98,6 +107,18 @@ You can verify the version in Colab with:
 ```python
 !python --version
 ```
+### Key Dependencies & Versions
+
+Some key packages used in this project:
+
+- Python 3.12.13
+- pandas 2.x
+- scikit-learn 1.x
+- numpy 1.x
+- matplotlib / seaborn for visualizations
+- (Add any NLP / model libraries you actually used, e.g., transformers, torch, etc.)
+
+See `requirements.txt` for the full, Colab-generated environment.
 
 
 ## ✨ Citation
